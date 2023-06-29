@@ -2,9 +2,9 @@ using Catalog.Entities;
 
 namespace Catalog.Repositories
 {
-    public class InMemItemsRepository
+    public class InMemItemsRepository : IItemsRepository
     {
-        private readonly List<Item> items = new() 
+        private readonly List<Item> items = new()
         {
             new Item { Id = Guid.NewGuid(), Name = "Potion", Price = 9, CreatedDate = DateTimeOffset.UtcNow},
             new Item { Id = Guid.NewGuid(), Name = "Iron Sword", Price = 20, CreatedDate = DateTimeOffset.UtcNow},
@@ -21,7 +21,7 @@ namespace Catalog.Repositories
         {
             // If there are a number of result matched to the conditon,
             // it will return only one or default result
-            return items.Where(item => item.Id == id).SingleOrDefault(); 
+            return items.Where(item => item.Id == id).SingleOrDefault();
         }
     }
 }
